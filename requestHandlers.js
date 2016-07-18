@@ -1,4 +1,5 @@
 'use strict';
+const querystring = require('querystring');
 
 module.exports.start = function(response, postData) {
   console.log('Request handler start was called');
@@ -22,6 +23,6 @@ module.exports.start = function(response, postData) {
 module.exports.upload = function(response, postData) {
   console.log('Request handler upload was called');
   response.writeHead(200, {'Content-Type': 'text/plain'});
-  response.write('You send: ' + postData);
+  response.write('You send: ' + querystring.parse(postData).text);
   response.end();
 }
